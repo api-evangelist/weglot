@@ -1,0 +1,90 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Weglot
+providerId: weglot
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Translation
+- Localization
+- Internationalization
+- Machine Translation
+- Multilingual
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Weglot spend. Weglot bills a recurring subscription per tier,
+  where each tier bundles a translated-word allowance and a number of translated
+  languages. The two cost drivers are unique translated words (counted once per
+  project, not per page view) and the number of target languages. Exceeding a
+  plan's word allowance halts new translations unless auto-upgrade is enabled, in
+  which case spend steps up to the next tier. Annual billing reduces effective
+  monthly cost (roughly two months free).
+notes: >-
+  Subscription prices and allowances are subject to change; verify against the
+  Weglot pricing page during reconciliation.
+sources:
+- https://www.weglot.com/pricing
+- https://developers.weglot.com/api/reference
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Weglot
+serviceCategory: Web Services
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Weglot Translation
+  ServiceCategory: Web Services
+  ProviderName: Weglot
+  PublisherName: Weglot
+  InvoiceIssuerName: Weglot
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription
+meters:
+- name: translated_words
+  description: Unique words translated across a project, counted once regardless of page views, against the plan allowance.
+  unit: words
+  aggregation: sum
+  dimensions:
+  - project
+  - plan
+- name: translated_languages
+  description: Number of target languages a project translates into, bounded by the plan.
+  unit: languages
+  aggregation: max
+  dimensions:
+  - project
+  - plan
+- name: subscription_fee
+  description: Recurring per-tier subscription charge, billed monthly or annually.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - project
+  - plan
+principles:
+- name: Visibility
+  description: Track translated-word consumption versus the plan allowance in the Weglot dashboard statistics.
+- name: Allocation
+  description: Map each Weglot project/API key to the website or team it serves and to a cost center.
+- name: Optimization
+  description: Use a glossary and translation exclusions to avoid translating boilerplate; right-size the plan to actual word and language needs; prefer annual billing for stable workloads.
+- name: Accountability
+  description: Decide deliberately whether to enable auto-upgrade; review word burn against allowance before renewal to avoid unplanned tier jumps.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

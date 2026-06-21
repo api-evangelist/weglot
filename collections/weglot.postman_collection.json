@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "Weglot Translation API",
+    "description": "REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences and is authenticated with an api_key query parameter; the /public/* endpoints (languages, language-pair support, status) are unauthenticated.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.weglot.com"
+    },
+    {
+      "key": "apiKey",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Translate",
+      "description": "Translation endpoint.",
+      "item": [
+        {
+          "name": "Translate an array of sentences.",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/translate?api_key={{apiKey}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "translate"
+              ],
+              "query": [
+                {
+                  "key": "api_key",
+                  "value": "{{apiKey}}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"request_url\": \"https://www.example.com/\",\n  \"title\": \"Example\",\n  \"bot\": 0,\n  \"words\": [\n    { \"w\": \"Hello world\", \"t\": 1 }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Translates an array of sentences from a source language (l_from) to a destination language (l_to). Each word carries a WordType (t: 1 TEXT, 2 VALUE, 3 PLACEHOLDER, 4 META_CONTENT, 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK). bot is a BotType (0 HUMAN, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX). Authenticated with the api_key query parameter."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Languages",
+      "description": "Public language catalog endpoints.",
+      "item": [
+        {
+          "name": "List supported languages.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/public/languages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "public",
+                "languages"
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "Returns the full list of languages Weglot supports, each with code, local_name, and english_name. No authentication required."
+          },
+          "response": []
+        },
+        {
+          "name": "Check language pair support.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/public/languages/is-supported?languageFrom=en&languageTo=fr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "public",
+                "languages",
+                "is-supported"
+              ],
+              "query": [
+                {
+                  "key": "languageFrom",
+                  "value": "en"
+                },
+                {
+                  "key": "languageTo",
+                  "value": "fr"
+                }
+              ]
+            },
+            "header": [],
+            "description": "Checks whether translation is supported for a given source/target language pair. No authentication required."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Status",
+      "description": "Public health-check endpoint.",
+      "item": [
+        {
+          "name": "API health check.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/public/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "public",
+                "status"
+              ]
+            },
+            "header": [],
+            "description": "Returns HTTP 200 with no content when the Weglot API is operational. No authentication required."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

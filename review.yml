@@ -1,0 +1,55 @@
+aid: weglot
+name: Weglot
+review:
+  question: Does Weglot expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Weglot's public API is a synchronous
+    request/response REST API only. There is no documented event-driven,
+    streaming, Server-Sent Events (SSE), or WebSocket surface to model, so
+    AsyncAPI is out of scope for this provider as of the review date.
+findings:
+  summary: |
+    Weglot does not publish a documented public WebSocket API. The Weglot
+    Translation API at https://api.weglot.com is a conventional REST (HTTPS)
+    API. Translation is performed with a single synchronous POST /translate
+    call authenticated by an api_key query parameter; the public language
+    catalog, language-pair support check, and status health check are
+    unauthenticated GET endpoints. No realtime, bidirectional, streaming, or
+    push (ws:// or wss://) endpoint is documented for translation or any other
+    Weglot product surface. The Weglot client-side experience is delivered by a
+    JavaScript library that calls this same REST API, not a WebSocket channel.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.weglot.com
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Weglot's API reference or developer documentation as of the review date.
+  endpointsConfirmedRest:
+    - POST https://api.weglot.com/translate
+    - GET  https://api.weglot.com/public/status
+    - GET  https://api.weglot.com/public/languages
+    - GET  https://api.weglot.com/public/languages/is-supported
+sources:
+  - url: https://developers.weglot.com/
+    type: Documentation
+    note: Developer documentation hub; lists Reference, JavaScript, and WordPress sections. No WebSocket mentioned.
+  - url: https://developers.weglot.com/api/reference
+    type: APIReference
+    note: All documented endpoints are HTTPS REST; translate uses api_key query-parameter auth.
+  - url: https://www.weglot.com/technical-presentation
+    type: Documentation
+    note: Describes how Weglot detects and serves translations via its REST service; no WebSocket transport described.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or other asynchronous/streaming protocol surface exists for
+    Weglot. The provider exposes only synchronous REST endpoints, so no
+    AsyncAPI document was authored and apis.yml models the REST APIs only.

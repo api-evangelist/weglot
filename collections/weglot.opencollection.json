@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weglot Translation API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "in": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Translate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Translate an array of sentences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.weglot.com/translate?api_key={{apiKey}}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"request_url\": \"https://www.example.com/\",\n  \"title\": \"Example\",\n  \"bot\": 0,\n  \"words\": [\n    { \"w\": \"Hello world\", \"t\": 1 }\n  ]\n}"
+            }
+          },
+          "docs": "Translates an array of sentences from a source language (l_from) to a destination language (l_to). Each word carries a WordType (t) and the request carries an optional BotType (bot). Authenticated with the api_key query parameter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported languages.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/languages"
+          },
+          "docs": "Returns the full list of languages Weglot supports, each with code, local_name, and english_name. No authentication required."
+        },
+        {
+          "info": {
+            "name": "Check language pair support.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/languages/is-supported?languageFrom=en&languageTo=fr"
+          },
+          "docs": "Checks whether translation is supported for a given source/target language pair. No authentication required."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API health check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/status"
+          },
+          "docs": "Returns HTTP 200 with no content when the Weglot API is operational. No authentication required."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+aid: weglot
+url: https://raw.githubusercontent.com/api-evangelist/weglot/refs/heads/main/apis.yml
+name: Weglot
+kind: company
+description: Weglot is a website translation platform that detects, translates, and
+  displays multilingual content with no code changes. Its REST API at
+  https://api.weglot.com powers machine and human translation of arrays of sentences
+  between languages, exposes the catalog of supported languages, and is the same
+  translation service used by the Weglot JavaScript, WordPress, Shopify, and CMS
+  integrations.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Translation
+- Localization
+- Internationalization
+- Machine Translation
+- Multilingual
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: weglot:weglot-translate-api
+  name: Weglot Translate API
+  tags:
+  - Translation
+  - Machine Translation
+  - Localization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.weglot.com/api/reference
+  baseURL: https://api.weglot.com
+  properties:
+  - url: https://developers.weglot.com/api/reference
+    type: Documentation
+  - url: https://developers.weglot.com/api/reference
+    type: APIReference
+  - url: openapi/weglot-openapi.yml
+    type: OpenAPI
+  - url: collections/weglot.postman_collection.json
+    type: PostmanCollection
+  - url: collections/weglot.opencollection.json
+    type: OpenCollection
+  description: Translates an array of sentences from a source language to a target
+    language via POST /translate, authenticated with an api_key query parameter.
+    Each word carries a WordType classification (text, value, placeholder, meta,
+    title, link, image) and an optional BotType so machine and human translations
+    are reused consistently across a site.
+- aid: weglot:weglot-languages-api
+  name: Weglot Languages API
+  tags:
+  - Languages
+  - Internationalization
+  - Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.weglot.com/api/reference
+  baseURL: https://api.weglot.com
+  properties:
+  - url: https://developers.weglot.com/api/reference
+    type: Documentation
+  - url: https://developers.weglot.com/api/reference
+    type: APIReference
+  - url: openapi/weglot-openapi.yml
+    type: OpenAPI
+  - url: collections/weglot.postman_collection.json
+    type: PostmanCollection
+  - url: collections/weglot.opencollection.json
+    type: OpenCollection
+  description: Public, unauthenticated endpoints that list every supported language
+    (code, local name, English name) and check whether a given source/target
+    language pair is supported for translation.
+- aid: weglot:weglot-status-api
+  name: Weglot Status API
+  tags:
+  - Status
+  - Health Check
+  - Monitoring
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.weglot.com/api/reference
+  baseURL: https://api.weglot.com
+  properties:
+  - url: https://developers.weglot.com/api/reference
+    type: Documentation
+  - url: https://developers.weglot.com/api/reference
+    type: APIReference
+  - url: openapi/weglot-openapi.yml
+    type: OpenAPI
+  - url: collections/weglot.postman_collection.json
+    type: PostmanCollection
+  - url: collections/weglot.opencollection.json
+    type: OpenCollection
+  description: A public, unauthenticated health-check endpoint that returns HTTP 200
+    when the Weglot translation API is operational.
+common:
+- type: GitHubOrganization
+  url: https://github.com/weglot
+- type: LinkedIn
+  url: https://www.linkedin.com/company/weglot
+- type: Website
+  url: https://www.weglot.com
+- type: Documentation
+  url: https://developers.weglot.com
+- type: Plans
+  url: plans/weglot-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/weglot-rate-limits.yml
+- type: FinOps
+  url: finops/weglot-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

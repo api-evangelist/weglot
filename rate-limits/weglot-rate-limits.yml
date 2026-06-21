@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Weglot
+providerId: weglot
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Translation
+- Localization
+- Internationalization
+- Machine Translation
+- Multilingual
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The primary usage constraint on the Weglot API is the per-plan translated-word
+  allowance (and the included number of languages), not a published per-second
+  request rate. Word allowance is consumed as unique content is translated, and a
+  project that exceeds its plan allowance stops translating new content (or
+  auto-upgrades to the next tier when enabled). Weglot does not publish explicit
+  per-minute / per-second request quotas for the translate or public endpoints;
+  specific request-rate values are not reconciled in this artifact.
+notes: >-
+  Verify on reconciliation whether Weglot documents explicit request-per-second
+  throttling or a Retry-After convention; the publicly documented limits are the
+  per-plan word and language allowances on the pricing page.
+sources:
+- https://www.weglot.com/pricing
+- https://developers.weglot.com/api/reference
+responseCodes:
+  throttled: 429
+limits:
+- name: Translated Word Allowance
+  scope: project
+  metric: words
+  limit: per plan (2,000 to 5,000,000; custom on Enterprise)
+  notes: Unique words translated across the project, counted once regardless of page views.
+- name: Translated Language Count
+  scope: project
+  metric: languages
+  limit: per plan (1 to 20; custom on Enterprise)
+  notes: Number of target languages a project may translate into.
+- name: Request Rate
+  scope: project
+  metric: requests
+  limit: see provider documentation
+  notes: No explicit per-second/per-minute request rate is published for the translate or public endpoints.
+policies:
+- name: Tiered Allowances
+  description: Word and language allowances increase as projects move up subscription tiers and via Enterprise agreements.
+- name: Auto-Upgrade
+  description: Projects can opt into automatic upgrade to the next plan when they exceed their current word allowance.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

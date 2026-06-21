@@ -1,0 +1,236 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Weglot
+providerId: weglot
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Translation
+- Localization
+- Internationalization
+- Machine Translation
+- Multilingual
+- Plans
+description: >-
+  Weglot uses tiered subscription pricing metered on two dimensions: the number
+  of translated words (counted once per unique word across the project, not per
+  page view) and the number of translated languages included. Each plan bundles a
+  word allowance and a language count; higher tiers raise both and unlock features
+  such as professional human translators, translated URLs, statistics, custom
+  languages, top-level domains, and enterprise security. A Free tier and a 14-day
+  free trial (no credit card) are available, and accounts can opt into auto-upgrade
+  to the next tier when limits are exceeded. Annual billing is offered at ~10x the
+  monthly price (roughly two months free).
+notes: >-
+  Prices and allowances reflect the Weglot pricing page (USD, monthly billing) and
+  are subject to change; verify current tiers, word allowances, and language counts
+  on https://www.weglot.com/pricing during reconciliation.
+sources:
+- https://www.weglot.com/pricing
+- https://developers.weglot.com/api/reference
+plans:
+- id: weglot-free
+  name: Free
+  type: free
+  description: >-
+    Entry tier for evaluating Weglot: 2,000 translated words into 1 language,
+    with AI translation and glossary.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 2000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: AI Translation
+  - name: Glossary
+- id: weglot-starter
+  name: Starter
+  type: paid
+  description: >-
+    10,000 translated words into 1 language, with media translation and
+    automatic visitor language redirection.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 10000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $17/month or $170/year
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Media Translation
+  - name: Automatic Redirection
+- id: weglot-business
+  name: Business
+  type: paid
+  description: >-
+    50,000 translated words into 3 languages, adding access to professional
+    human translators.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 50000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $32/month or $320/year
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 3
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Professional Translators
+- id: weglot-pro
+  name: Pro
+  type: paid
+  description: >-
+    200,000 translated words into 5 languages, adding translation statistics
+    and translated URLs.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 200000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $87/month or $870/year
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 5
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Statistics
+  - name: Translated URLs
+- id: weglot-advanced
+  name: Advanced
+  type: paid
+  description: >-
+    1,000,000 translated words into 10 languages, adding translation
+    export/import and custom languages.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 1000000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $329/month or $3,290/year
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 10
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Export / Import
+  - name: Custom Languages
+- id: weglot-extended
+  name: Extended
+  type: paid
+  description: >-
+    5,000,000 translated words into 20 languages, adding top-level domain
+    support and premium support.
+  entries:
+  - label: Translated Words
+    name: words
+    type: limit
+    metric: words
+    limit: 5000000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $769/month or $7,690/year
+    userMultiplied: false
+  - label: Translated Languages
+    name: languages
+    type: limit
+    metric: languages
+    limit: 20
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Top-Level Domain
+  - name: Premium Support
+- id: weglot-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom word allowances and language counts with enterprise-grade security
+    and compliance, dedicated support, and negotiated terms. Contact Weglot sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Words and Languages
+  - name: Enterprise Security and Compliance
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
