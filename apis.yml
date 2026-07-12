@@ -90,6 +90,14 @@ apis:
   description: A public, unauthenticated health-check endpoint that returns HTTP 200
     when the Weglot translation API is operational.
 common:
+- type: TrustCenter
+  url: security/weglot-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/weglot-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/weglot-domain-security.yml
+- type: Authentication
+  url: authentication/weglot-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/weglot
 - type: LinkedIn
@@ -104,6 +112,8 @@ common:
   url: rate-limits/weglot-rate-limits.yml
 - type: FinOps
   url: finops/weglot-finops.yml
+- url: https://www.weglot.com/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

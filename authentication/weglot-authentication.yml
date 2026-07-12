@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/weglot-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: api_key
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: Weglot project API key passed as the api_key query parameter.
+  sources:
+  - openapi/weglot-openapi.yml
