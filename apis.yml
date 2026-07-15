@@ -90,6 +90,8 @@ apis:
   description: A public, unauthenticated health-check endpoint that returns HTTP 200
     when the Weglot translation API is operational.
 common:
+- type: AgenticAccess
+  url: agentic-access/weglot-agentic-access.yml
 - type: TrustCenter
   url: security/weglot-trust-center.yml
 - type: VulnerabilityDisclosure
