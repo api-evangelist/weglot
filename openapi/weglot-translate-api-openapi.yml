@@ -1,0 +1,173 @@
+openapi: 3.0.1
+info:
+  title: Weglot Translation Languages Translate API
+  description: REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences from a source language to a target language and is authenticated with an api_key query parameter. The public /public/* endpoints expose the catalog of supported languages, a language-pair support check, and a health-check status endpoint, and require no authentication. This is the same translation service consumed by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.
+  termsOfService: https://www.weglot.com/legals/terms-and-conditions
+  contact:
+    name: Weglot Support
+    url: https://developers.weglot.com
+  version: '1.0'
+servers:
+- url: https://api.weglot.com
+security:
+- api_key: []
+tags:
+- name: Translate
+paths:
+  /translate:
+    post:
+      operationId: translate
+      tags:
+      - Translate
+      summary: Translate an array of sentences.
+      description: Takes an array of sentences in an original language and returns the same array translated into a target language. Translations are cached and reused by Weglot across a project, so repeat requests for the same words are consistent. Authenticated with the api_key query parameter.
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: Weglot project API key.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TranslateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslateResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - missing or invalid api_key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Word:
+      type: object
+      required:
+      - w
+      - t
+      properties:
+        w:
+          type: string
+          description: The text/sentence to translate.
+          example: Hello world
+        t:
+          $ref: '#/components/schemas/WordType'
+    BotType:
+      type: integer
+      description: Identifies the source of the request. 0 HUMAN, 1 OTHER, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      example: 0
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          nullable: true
+        error:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+    TranslateResponse:
+      type: object
+      properties:
+        l_from:
+          type: string
+          example: en
+        l_to:
+          type: string
+          example: fr
+        title:
+          type: string
+        request_url:
+          type: string
+        bot:
+          $ref: '#/components/schemas/BotType'
+        from_words:
+          type: array
+          description: The original sentences, in request order.
+          items:
+            type: string
+          example:
+          - Hello world
+        to_words:
+          type: array
+          description: The translated sentences, in the same order as from_words.
+          items:
+            type: string
+          example:
+          - Bonjour le monde
+    TranslateRequest:
+      type: object
+      required:
+      - l_from
+      - l_to
+      - words
+      properties:
+        l_from:
+          type: string
+          description: ISO 639-1 code of the original language.
+          example: en
+        l_to:
+          type: string
+          description: ISO 639-1 code of the destination language.
+          example: fr
+        request_url:
+          type: string
+          description: URL of the page the words originate from.
+          example: https://www.example.com/
+        title:
+          type: string
+          description: Title of the page the words originate from.
+        bot:
+          $ref: '#/components/schemas/BotType'
+        words:
+          type: array
+          description: The array of words/sentences to translate.
+          items:
+            $ref: '#/components/schemas/Word'
+    WordType:
+      type: integer
+      description: Classifies the context of a piece of text so it is translated and reused appropriately. 0 OTHER (deprecated), 1 TEXT, 2 VALUE (input value attribute), 3 PLACEHOLDER (input placeholder), 4 META_CONTENT (meta tag content), 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      example: 1
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Weglot project API key passed as the api_key query parameter.

@@ -1,0 +1,88 @@
+openapi: 3.0.1
+info:
+  title: Weglot Translation Languages API
+  description: REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences from a source language to a target language and is authenticated with an api_key query parameter. The public /public/* endpoints expose the catalog of supported languages, a language-pair support check, and a health-check status endpoint, and require no authentication. This is the same translation service consumed by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.
+  termsOfService: https://www.weglot.com/legals/terms-and-conditions
+  contact:
+    name: Weglot Support
+    url: https://developers.weglot.com
+  version: '1.0'
+servers:
+- url: https://api.weglot.com
+security:
+- api_key: []
+tags:
+- name: Languages
+paths:
+  /public/languages:
+    get:
+      operationId: getLanguages
+      tags:
+      - Languages
+      summary: List supported languages.
+      description: Returns the full list of languages Weglot supports for translation.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+  /public/languages/is-supported:
+    get:
+      operationId: isLanguagePairSupported
+      tags:
+      - Languages
+      summary: Check language pair support.
+      description: Checks whether translation is supported for a given source/target language pair.
+      parameters:
+      - name: languageFrom
+        in: query
+        required: true
+        description: ISO 639-1 source language code.
+        schema:
+          type: string
+      - name: languageTo
+        in: query
+        required: true
+        description: ISO 639-1 target language code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IsSupportedResponse'
+components:
+  schemas:
+    IsSupportedResponse:
+      type: object
+      properties:
+        is_supported:
+          type: boolean
+          example: true
+    Language:
+      type: object
+      properties:
+        code:
+          type: string
+          description: ISO 639-1 language code.
+          example: fr
+        local_name:
+          type: string
+          description: Language name in its native script.
+          example: Français
+        english_name:
+          type: string
+          description: Language name in English.
+          example: French
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Weglot project API key passed as the api_key query parameter.
