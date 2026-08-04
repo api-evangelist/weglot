@@ -1,0 +1,18 @@
+{
+  "provider": "weglot",
+  "sources": [
+    "weglot-languages-api-openapi.yml",
+    "weglot-status-api-openapi.yml",
+    "weglot-translate-api-openapi.yml"
+  ],
+  "outputs": [
+    "weglot-languages-api-openapi.yml",
+    "weglot-status-api-openapi.yml",
+    "weglot-translate-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
