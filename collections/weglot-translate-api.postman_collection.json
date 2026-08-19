@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "c6ad243f-c857-4073-8031-56bee19a70b1",
+      "name": "Translate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddea7cbf-ae1e-4cfb-ab23-5ec91aa8f3c3",
+          "name": "Translate an array of sentences.",
+          "request": {
+            "name": "Translate an array of sentences.",
+            "description": {
+              "content": "Takes an array of sentences in an original language and returns the same array translated into a target language. Translations are cached and reused by Weglot across a project, so repeat requests for the same words are consistent. Authenticated with the api_key query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "translate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) Weglot project API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"l_from\": \"<string>\",\n  \"l_to\": \"<string>\",\n  \"words\": [\n    {\n      \"w\": \"<string>\",\n      \"t\": \"<integer>\"\n    },\n    {\n      \"w\": \"<string>\",\n      \"t\": \"<integer>\"\n    }\n  ],\n  \"request_url\": \"<string>\",\n  \"title\": \"<string>\",\n  \"bot\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22242a52-630d-49da-9197-811de750925a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"words\": [\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    },\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    }\n  ],\n  \"request_url\": \"https://www.example.com/\",\n  \"title\": \"<string>\",\n  \"bot\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"title\": \"string\",\n  \"request_url\": \"string\",\n  \"bot\": 0,\n  \"from_words\": [\n    \"Hello world\"\n  ],\n  \"to_words\": [\n    \"Bonjour le monde\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54aec07f-201a-47e8-a014-77a8562bc636",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"words\": [\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    },\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    }\n  ],\n  \"request_url\": \"https://www.example.com/\",\n  \"title\": \"<string>\",\n  \"bot\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9685,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6df5828c-b698-495d-b354-06ce6834ade2",
+              "name": "Unauthorized - missing or invalid api_key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "translate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"l_from\": \"en\",\n  \"l_to\": \"fr\",\n  \"words\": [\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    },\n    {\n      \"w\": \"Hello world\",\n      \"t\": 1\n    }\n  ],\n  \"request_url\": \"https://www.example.com/\",\n  \"title\": \"<string>\",\n  \"bot\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9685,\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.weglot.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "934e8545-c84b-494f-86e0-a44bdc332582",
+    "name": "Weglot Translation Languages Translate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences from a source language to a target language and is authenticated with an api_key query parameter. The public /public/* endpoints expose the catalog of supported languages, a language-pair support check, and a health-check status endpoint, and require no authentication. This is the same translation service consumed by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.\n\nContact Support:\n Name: Weglot Support",
+      "type": "text/plain"
+    }
+  }
+}

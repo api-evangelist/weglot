@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weglot Translation Languages Translate API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Translate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Translate an array of sentences.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.weglot.com/translate",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "Weglot project API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes an array of sentences in an original language and returns the same array translated into a target language. Translations are cached and reused by Weglot across a project, so repeat requests for the same words are consistent. Authenticated with the api_key query parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

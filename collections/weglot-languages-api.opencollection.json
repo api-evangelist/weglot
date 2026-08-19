@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weglot Translation Languages API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported languages.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/languages"
+          },
+          "docs": "Returns the full list of languages Weglot supports for translation."
+        },
+        {
+          "info": {
+            "name": "Check language pair support.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/languages/is-supported",
+            "params": [
+              {
+                "name": "languageFrom",
+                "value": "",
+                "type": "query",
+                "description": "ISO 639-1 source language code."
+              },
+              {
+                "name": "languageTo",
+                "value": "",
+                "type": "query",
+                "description": "ISO 639-1 target language code."
+              }
+            ]
+          },
+          "docs": "Checks whether translation is supported for a given source/target language pair."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

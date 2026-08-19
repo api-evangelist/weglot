@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Weglot Translation Languages Status API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API health check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.weglot.com/public/status"
+          },
+          "docs": "Returns HTTP 200 with no content when the Weglot API is operational."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
