@@ -38,6 +38,8 @@ apis:
   humanURL: https://developers.weglot.com/api/reference
   baseURL: https://api.weglot.com
   tags:
+  - Language
+  tags_raw:
   - Languages
   properties:
   - type: OpenAPI
