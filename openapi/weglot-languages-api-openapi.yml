@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Weglot Translation Languages API
   description: REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences from a source language to a target language and is authenticated with an api_key query parameter. The public /public/* endpoints expose the catalog of supported languages, a language-pair support check, and a health-check status endpoint, and require no authentication. This is the same translation service consumed by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.
@@ -19,7 +19,7 @@ paths:
       operationId: getLanguages
       tags:
       - Languages
-      summary: List supported languages.
+      summary: List supported languages
       description: Returns the full list of languages Weglot supports for translation.
       responses:
         '200':
@@ -35,7 +35,7 @@ paths:
       operationId: isLanguagePairSupported
       tags:
       - Languages
-      summary: Check language pair support.
+      summary: Check language pair support
       description: Checks whether translation is supported for a given source/target language pair.
       parameters:
       - name: languageFrom

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Weglot Translation Languages Status API
+  title: Weglot Translation Status API
   description: REST API for the Weglot website translation platform. The /translate endpoint translates an array of sentences from a source language to a target language and is authenticated with an api_key query parameter. The public /public/* endpoints expose the catalog of supported languages, a language-pair support check, and a health-check status endpoint, and require no authentication. This is the same translation service consumed by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.
   termsOfService: https://www.weglot.com/legals/terms-and-conditions
   contact:
@@ -19,7 +19,7 @@ paths:
       operationId: getStatus
       tags:
       - Status
-      summary: API health check.
+      summary: API health check
       description: Returns HTTP 200 with no content when the Weglot API is operational.
       responses:
         '200':
