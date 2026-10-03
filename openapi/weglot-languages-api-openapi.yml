@@ -59,6 +59,12 @@ paths:
                 $ref: '#/components/schemas/IsSupportedResponse'
 components:
   schemas:
+    IsSupportedResponse:
+      type: object
+      properties:
+        is_supported:
+          type: boolean
+          example: true
     Language:
       type: object
       properties:
@@ -74,12 +80,6 @@ components:
           type: string
           description: Language name in English.
           example: French
-    IsSupportedResponse:
-      type: object
-      properties:
-        is_supported:
-          type: boolean
-          example: true
   securitySchemes:
     api_key:
       type: apiKey

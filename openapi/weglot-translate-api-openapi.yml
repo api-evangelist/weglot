@@ -55,6 +55,46 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    WordType:
+      type: integer
+      description: Classifies the context of a piece of text so it is translated and reused appropriately. 0 OTHER (deprecated), 1 TEXT, 2 VALUE (input value attribute), 3 PLACEHOLDER (input placeholder), 4 META_CONTENT (meta tag content), 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      example: 1
+    Word:
+      type: object
+      required:
+      - w
+      - t
+      properties:
+        w:
+          type: string
+          description: The text/sentence to translate.
+          example: Hello world
+        t:
+          $ref: '#/components/schemas/WordType'
+    BotType:
+      type: integer
+      description: Identifies the source of the request. 0 HUMAN, 1 OTHER, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      example: 0
     TranslateRequest:
       type: object
       required:
@@ -84,49 +124,6 @@ components:
           description: The array of words/sentences to translate.
           items:
             $ref: '#/components/schemas/Word'
-    WordType:
-      type: integer
-      description: Classifies the context of a piece of text so it is translated and reused appropriately. 0 OTHER (deprecated), 1 TEXT, 2 VALUE (input value attribute), 3 PLACEHOLDER (input placeholder), 4 META_CONTENT (meta tag content), 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK.
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      example: 1
-    Word:
-      type: object
-      required:
-      - w
-      - t
-      properties:
-        w:
-          type: string
-          description: The text/sentence to translate.
-          example: Hello world
-        t:
-          $ref: '#/components/schemas/WordType'
-    Error:
-      type: object
-      properties:
-        code:
-          type:
-          - integer
-          - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
     TranslateResponse:
       type: object
       properties:
@@ -156,18 +153,21 @@ components:
             type: string
           example:
           - Bonjour le monde
-    BotType:
-      type: integer
-      description: Identifies the source of the request. 0 HUMAN, 1 OTHER, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX.
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      example: 0
+    Error:
+      type: object
+      properties:
+        code:
+          type:
+          - integer
+          - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
   securitySchemes:
     api_key:
       type: apiKey
