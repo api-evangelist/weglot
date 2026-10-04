@@ -55,22 +55,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    WordType:
-      type: integer
-      description: Classifies the context of a piece of text so it is translated and reused appropriately. 0 OTHER (deprecated), 1 TEXT, 2 VALUE (input value attribute), 3 PLACEHOLDER (input placeholder), 4 META_CONTENT (meta tag content), 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK.
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      example: 1
     Word:
       type: object
       required:
@@ -83,47 +67,6 @@ components:
           example: Hello world
         t:
           $ref: '#/components/schemas/WordType'
-    BotType:
-      type: integer
-      description: Identifies the source of the request. 0 HUMAN, 1 OTHER, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX.
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      example: 0
-    TranslateRequest:
-      type: object
-      required:
-      - l_from
-      - l_to
-      - words
-      properties:
-        l_from:
-          type: string
-          description: ISO 639-1 code of the original language.
-          example: en
-        l_to:
-          type: string
-          description: ISO 639-1 code of the destination language.
-          example: fr
-        request_url:
-          type: string
-          description: URL of the page the words originate from.
-          example: https://www.example.com/
-        title:
-          type: string
-          description: Title of the page the words originate from.
-        bot:
-          $ref: '#/components/schemas/BotType'
-        words:
-          type: array
-          description: The array of words/sentences to translate.
-          items:
-            $ref: '#/components/schemas/Word'
     TranslateResponse:
       type: object
       properties:
@@ -153,6 +96,18 @@ components:
             type: string
           example:
           - Bonjour le monde
+    BotType:
+      type: integer
+      description: Identifies the source of the request. 0 HUMAN, 1 OTHER, 2 GOOGLE, 3 BING, 4 YAHOO, 5 BAIDU, 6 YANDEX.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      example: 0
     Error:
       type: object
       properties:
@@ -168,6 +123,51 @@ components:
           type:
           - string
           - 'null'
+    TranslateRequest:
+      type: object
+      required:
+      - l_from
+      - l_to
+      - words
+      properties:
+        l_from:
+          type: string
+          description: ISO 639-1 code of the original language.
+          example: en
+        l_to:
+          type: string
+          description: ISO 639-1 code of the destination language.
+          example: fr
+        request_url:
+          type: string
+          description: URL of the page the words originate from.
+          example: https://www.example.com/
+        title:
+          type: string
+          description: Title of the page the words originate from.
+        bot:
+          $ref: '#/components/schemas/BotType'
+        words:
+          type: array
+          description: The array of words/sentences to translate.
+          items:
+            $ref: '#/components/schemas/Word'
+    WordType:
+      type: integer
+      description: Classifies the context of a piece of text so it is translated and reused appropriately. 0 OTHER (deprecated), 1 TEXT, 2 VALUE (input value attribute), 3 PLACEHOLDER (input placeholder), 4 META_CONTENT (meta tag content), 5 IFRAME_SRC, 6 IMG_SRC, 7 IMG_ALT, 8 PDF_HREF, 9 PAGE_TITLE, 10 EXTERNAL_LINK.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      example: 1
   securitySchemes:
     api_key:
       type: apiKey
