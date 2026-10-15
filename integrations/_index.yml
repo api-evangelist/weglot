@@ -65,7 +65,7 @@
     actions: true
     sources: false
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: weglot-wordpress-own
   label: WordPress (own)
