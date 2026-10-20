@@ -1,5 +1,11 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
 method: searched
+source:
+- square/integrations/square-integration-edges.yml
+- https://zapier.com/apps/weglot/integrations
+- https://n8n.io/integrations/weglot/
+- https://composio.dev/toolkits/weglot
+- https://monid.ai/tools/weglot
 checked:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
@@ -7,8 +13,12 @@ checked:
 - square/integrations/square-integration-edges.yml
 - woocommerce/integrations/woocommerce-integration-edges.yml
 - wordpress/integrations/wordpress-integration-edges.yml
-source:
-- square/integrations/square-integration-edges.yml
+- https://composio.dev/toolkits/weglot
+- https://monid.ai/tools/weglot
+- https://n8n.io/integrations/weglot/
+- https://zapier.com/apps/weglot/integrations
+summary: null
+marketplace_apps: []
 edges:
 - partner_name: Shopify (own)
   partner: shopify
@@ -105,3 +115,4 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+templates: []
