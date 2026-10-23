@@ -93,3 +93,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: weglot-bubble-own
+  label: Bubble (own)
+  partner: bubble
+  partner_name: Bubble (own)
+  category: Background Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://bubble.io/plugin/weglot-translate-1666284313043x618167528962654200
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
