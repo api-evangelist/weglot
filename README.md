@@ -1,4 +1,4 @@
-# Weglot (weglot)
+# Weglot
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,97 +66,130 @@
 
 Weglot is a website translation platform that detects, translates, and displays multilingual content with no code changes. Its REST API at https://api.weglot.com powers machine and human translation of arrays of sentences between languages, exposes the catalog of supported languages, and is the same translation service used by the Weglot JavaScript, WordPress, Shopify, and CMS integrations.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/weglot/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/weglot/refs/heads/main/apis.yml)
+**Areas:** Translation · Localization · Internationalization · Machine Translation · Multilingual
 
-## Tags
+## Weglot on APIs.io
 
-- Translation
-- Localization
-- Internationalization
-- Machine Translation
-- Multilingual
+Everything profiled for Weglot is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/weglot/](https://apis.io/providers/weglot/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Weglot Languages API](https://apis.io/apis/weglot/weglot-languages-api/) — The Languages API from Weglot — 2 operation(s) for languages.
+- [Weglot Status API](https://apis.io/apis/weglot/weglot-status-api/) — The Status API from Weglot — 1 operation(s) for status.
+- [Weglot Translate API](https://apis.io/apis/weglot/weglot-translate-api/) — The Translate API from Weglot — 1 operation(s) for translate.
 
-## APIs
+### Published properties
 
-### Weglot Translate API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Translates an array of sentences from a source language to a target language via POST /translate, authenticated with an api_key query parameter. Each word carries a WordType classification (text, value, placeholder, meta, title, link, image) and an optional BotType so machine and human translations are reused consistently across a site.
+#### MCP servers (1)
 
-- **Human URL:** [https://developers.weglot.com/api/reference](https://developers.weglot.com/api/reference)
-- **Base URL:** `https://api.weglot.com`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [weglot](https://apis.io/servers/weglot/weglot/)
 
-- Translation
-- Machine Translation
-- Localization
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://developers.weglot.com/api/reference)
-- [API Reference](https://developers.weglot.com/api/reference)
-- [OpenAPI](openapi/weglot-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/weglot.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/weglot.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Weglot Agentic Access](https://apis.io/agentic-access/weglot/weglot-agentic-access/)
 
-### Weglot Languages API
+#### Collections (4)
 
-Public, unauthenticated endpoints that list every supported language (code, local name, English name) and check whether a given source/target language pair is supported for translation.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://developers.weglot.com/api/reference](https://developers.weglot.com/api/reference)
-- **Base URL:** `https://api.weglot.com`
+- [Weglot Translation API](https://apis.io/collections/weglot/open-weglot/)
+- [Weglot Translation Languages API](https://apis.io/collections/weglot/open-weglot-languages-api/)
+- [Weglot Translation Languages Status API](https://apis.io/collections/weglot/open-weglot-status-api/)
+- [Weglot Translation Languages Translate API](https://apis.io/collections/weglot/open-weglot-translate-api/)
 
-#### Tags
+#### Security (4)
 
-- Languages
-- Internationalization
-- Catalog
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Weglot Authentication](https://apis.io/security/weglot/weglot-authentication/)
+- [Weglot Domain Security](https://apis.io/security/weglot/weglot-domain-security/)
+- [Weglot Trust Center](https://apis.io/security/weglot/weglot-trust-center/)
+- [Weglot Vulnerability Disclosure](https://apis.io/security/weglot/weglot-vulnerability-disclosure/)
 
-- [Documentation](https://developers.weglot.com/api/reference)
-- [API Reference](https://developers.weglot.com/api/reference)
-- [OpenAPI](openapi/weglot-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/weglot.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/weglot.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Weglot Status API
+Published plans, tiers and prices.
 
-A public, unauthenticated health-check endpoint that returns HTTP 200 when the Weglot translation API is operational.
+- [Weglot Plans Pricing](https://apis.io/plans/weglot/weglot-plans-pricing/)
 
-- **Human URL:** [https://developers.weglot.com/api/reference](https://developers.weglot.com/api/reference)
-- **Base URL:** `https://api.weglot.com`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Status
-- Health Check
-- Monitoring
+- [Weglot Rate Limits](https://apis.io/rate-limits/weglot/weglot-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://developers.weglot.com/api/reference)
-- [API Reference](https://developers.weglot.com/api/reference)
-- [OpenAPI](openapi/weglot-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/weglot.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/weglot.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-## Common Properties
+- [Weglot Finops](https://apis.io/finops/weglot/weglot-finops/)
 
-- [GitHub Organization](https://github.com/weglot)
-- [LinkedIn](https://www.linkedin.com/company/weglot)
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.weglot.com)
 - [Documentation](https://developers.weglot.com)
-- [Plans](plans/weglot-plans-pricing.yml)
-- [Rate Limits](rate-limits/weglot-rate-limits.yml)
-- [Fin Ops](finops/weglot-finops.yml)
+- [Blog](https://www.weglot.com/blog)
+- [GitHub](https://github.com/weglot)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.4** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 47.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 15.8 |
+
+**Agent readiness 47.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/weglot/](https://apis.io/providers/weglot/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Weglot: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/weglot/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
